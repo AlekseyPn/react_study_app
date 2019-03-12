@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+// import logo from './logo.svg';
+import './App.css'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+interface IAppProps {
+  name: string;
+  site: string;
 }
 
-export default App;
+const App: React.FC<IAppProps> = props => {
+  return (
+    <div className="container">
+      <h1>TZ #1 with hooks & TS</h1>
+      <nav>
+        <p>Navigation</p>
+      </nav>
+      <p>Render routes</p>
+      <p>Hello, {props.name}</p>
+      <p>Site: {props.site}</p>
+      {props.children}
+    </div>
+  )
+}
+
+const Baby = () => {
+  return <p>Baby component</p>
+}
+
+const RoutedApp = () => {
+  return (
+    <App name="Fargustian" site="alekseypn.github.io">
+      <Baby />
+    </App>
+  )
+}
+export { RoutedApp }
