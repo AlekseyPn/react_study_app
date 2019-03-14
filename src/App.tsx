@@ -1,10 +1,12 @@
 import { Link, RouteComponentProps, Router } from '@reach/router'
 import React from 'react'
-// import logo from './logo.svg';
+import { checkAuthStatus, logout } from './api/auth'
 import './App.css'
+import Authenticated from './common/Authenticated'
 import About from './pages/About'
 import Login from './pages/Login'
 import News from './pages/News'
+import Profile from './pages/Profile'
 
 interface IAppProps extends RouteComponentProps {
   name: string;
@@ -22,8 +24,15 @@ const App: React.FC<IAppProps> = props => {
         {'  '}
         <Link to="/about/habr">About habr</Link>
         {'  '}
-        <Link to="/login">Login</Link>
+        <Link to="/profile">Profile</Link>
         {'  '}
+        {checkAuthStatus() ? (
+          <button onClick={logout} className="logout">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </nav>
       <p>
         {'  '}
@@ -42,6 +51,9 @@ const RoutedApp = () => {
         <News path="/news" />
         <About path="/about/:source" />
         <Login path="/login" />
+        <Authenticated>
+          <Profile path="/profile" />
+        </Authenticated>
       </App>
     </Router>
   )
