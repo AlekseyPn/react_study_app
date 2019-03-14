@@ -3,6 +3,7 @@ import React from 'react'
 // import logo from './logo.svg';
 import './App.css'
 import About from './pages/About'
+import Login from './pages/Login'
 import News from './pages/News'
 
 interface IAppProps extends RouteComponentProps {
@@ -21,6 +22,8 @@ const App: React.FC<IAppProps> = props => {
         {'  '}
         <Link to="/about/habr">About habr</Link>
         {'  '}
+        <Link to="/login">Login</Link>
+        {'  '}
       </nav>
       <p>
         {'  '}
@@ -38,6 +41,7 @@ const RoutedApp = () => {
       <App name="Fargustian" site="alekseypn.github.io" path="/">
         <News path="/news" />
         <About path="/about/:source" />
+        <Login path="/login" />
       </App>
     </Router>
   )
