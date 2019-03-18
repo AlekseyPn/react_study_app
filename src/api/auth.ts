@@ -29,7 +29,7 @@ export function authenticate(data: IUserIdentity): Promise<IAuthResponse> {
 }
 
 export function checkAuthStatus(): boolean {
-  return JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY) || '')
+  return !!localStorage.getItem(AUTH_STORAGE_KEY)
 }
 
 export function logout(): void {

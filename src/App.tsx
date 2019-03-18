@@ -30,9 +30,7 @@ const App: React.FC<IAppProps> = props => {
           <button onClick={logout} className="logout">
             Logout
           </button>
-        ) : (
-          <Link to="/login">Login</Link>
-        )}
+        ) : null}
       </nav>
       <p>
         {'  '}
