@@ -30,9 +30,7 @@ const App: React.FC<IAppProps> = props => {
           <button onClick={logout} className="logout">
             Logout
           </button>
-        ) : (
-          <Link to="/login">Login</Link>
-        )}
+        ) : null}
       </nav>
       <p>
         {'  '}
@@ -51,8 +49,8 @@ const RoutedApp = () => {
         <News path="/news" />
         <About path="/about/:source" />
         <Login path="/login" />
-        <Authenticated>
-          <Profile path="/profile" />
+        <Authenticated path="/profile">
+          <Profile path="/" />
         </Authenticated>
       </App>
     </Router>
