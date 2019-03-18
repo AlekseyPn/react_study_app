@@ -6,7 +6,7 @@ import { INewsItem } from '../models/news'
 
 const News: React.FC<RouteComponentProps> = () => {
   const [news, setNews] = React.useState<INewsItem[]>([])
-
+  // todo use action in effect by connect https://stackoverflow.com/questions/54632520/how-to-fetch-data-by-existing-redux-action-with-hooks
   React.useEffect(() => {
     getNews()
       .then(response => {
