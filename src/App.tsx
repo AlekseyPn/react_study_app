@@ -51,8 +51,8 @@ const RoutedApp = () => {
         <News path="/news" />
         <About path="/about/:source" />
         <Login path="/login" />
-        <Authenticated>
-          <Profile path="/profile" />
+        <Authenticated path="/profile">
+          <Profile path="/" />
         </Authenticated>
       </App>
     </Router>
