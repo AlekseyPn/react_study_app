@@ -7,7 +7,7 @@ import {
 } from '../types/news.types'
 
 const initialState: INewsState = {
-  news: [],
+  list: [],
   loading: false,
   errorText: undefined,
 }
@@ -16,8 +16,8 @@ export function news(state = initialState, action: NewsActions): INewsState {
   switch (action.type) {
     case SET_NEWS: {
       return {
-        news: [...state.news, ...action.payload.news],
         ...state,
+        list: [...action.payload.list],
       }
     }
     case SET_LOADING: {

@@ -3,7 +3,7 @@ import { getNews } from '../../api/News'
 import { NewsActions } from '../types/news.types'
 import { setError, setLoading, setNews } from './news.actions'
 
-export async function requestNews(dispatch: Dispatch<NewsActions>) {
+export const requestNews = async (dispatch: Dispatch<NewsActions>) => {
   dispatch(setLoading(true))
   try {
     const { data } = await getNews()

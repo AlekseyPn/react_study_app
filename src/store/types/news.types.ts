@@ -7,9 +7,9 @@ export const SET_LOADING = 'SET_LOADING'
 export const SET_ERROR = 'SET_ERROR'
 
 export interface INewsState {
-  readonly news: ReadonlyArray<INewsItem>;
-  readonly loading: boolean;
-  readonly errorText?: string;
+  list: INewsItem[];
+  loading: boolean;
+  errorText?: string;
 }
 
 export type NewsActions = ActionType<typeof actions>
