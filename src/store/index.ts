@@ -3,6 +3,7 @@ import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import rootReducers from './reducers'
 import { INewsState } from './types/news.types'
+import { IUserState } from './types/user.types'
 
 const logger = createLogger({
   duration: true,
@@ -10,6 +11,7 @@ const logger = createLogger({
 
 export interface IRootState {
   news: INewsState;
+  user: IUserState;
 }
 
 const store = createStore<IRootState, any, any, any>(

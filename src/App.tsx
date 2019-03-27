@@ -3,9 +3,9 @@ import React from 'react'
 import { checkAuthStatus, logout } from './api/auth'
 import './App.css'
 import Authenticated from './common/Authenticated'
+import NewsContainer from './containers/NewsContainer'
 import About from './pages/About'
 import Login from './pages/Login'
-import News from './pages/News'
 import Profile from './pages/Profile'
 
 interface IAppProps extends RouteComponentProps {
@@ -46,7 +46,7 @@ const RoutedApp = () => {
   return (
     <Router>
       <App name="Fargustian" site="alekseypn.github.io" path="/">
-        <News path="/news" />
+        <NewsContainer path="/news" />
         <About path="/about/:source" />
         <Login path="/login" />
         <Authenticated path="/profile">

@@ -12,7 +12,7 @@ const initialState: INewsState = {
   errorText: undefined,
 }
 
-export function news(state = initialState, action: NewsActions): INewsState {
+export default function news(state = initialState, action: NewsActions): INewsState {
   switch (action.type) {
     case SET_NEWS: {
       return {
