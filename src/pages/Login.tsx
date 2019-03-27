@@ -1,9 +1,18 @@
 import { navigate, RouteComponentProps } from '@reach/router'
 import React from 'react'
-import { authenticate } from '../api/auth'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import { IUserIdentity } from '../models/user'
+import { loginUser, UserActions } from '../store/actions/user.actions'
 
-const Login: React.FC<RouteComponentProps> = () => {
+const mapDispatcherToProps = (dispatch: Dispatch<UserActions>) => ({
+  authenticate: (user: IUserIdentity) => loginUser(dispatch, user),
+});
+
+type LoginProps = ReturnType<typeof mapDispatcherToProps> &
+  RouteComponentProps
+
+const Login: React.FC<LoginProps> = ({ authenticate }) => {
   const [user, setField] = React.useState<IUserIdentity>({
     username: '',
     password: '',
@@ -12,7 +21,7 @@ const Login: React.FC<RouteComponentProps> = () => {
   const [notification, setNotification] = React.useState<string>('')
 
   const onInputChange = (fieldName: string) => (
-    e: React.SyntheticEvent<HTMLInputElement>
+    e: React.SyntheticEvent<HTMLInputElement>,
   ): void => {
     setField({ ...user, [fieldName]: e.currentTarget.value })
     setNotification('')
@@ -34,7 +43,7 @@ const Login: React.FC<RouteComponentProps> = () => {
 
   return (
     <>
-      <h2>Login</h2>
+      <h2 className="login__title">Login</h2>
       <form onSubmit={onSubmit} className="form login-form">
         {notification ? <p>{notification}</p> : null}
         <div className="login-form__group">
@@ -71,4 +80,4 @@ const Login: React.FC<RouteComponentProps> = () => {
   )
 }
 
-export default Login
+export default connect(mapDispatcherToProps)(Login)

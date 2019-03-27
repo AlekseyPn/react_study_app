@@ -7,7 +7,7 @@ interface IAuthResponse {
   errorText?: string;
 }
 
-const AUTH_STORAGE_KEY: string = 'authenticated'
+export const AUTH_STORAGE_KEY: string = 'authenticated'
 
 const checkUserIdentity = (data: IUserIdentity) =>
   data.username === 'Admin' && data.password === '12345'
@@ -20,7 +20,6 @@ export function authenticate(data: IUserIdentity): Promise<IAuthResponse> {
         errorText: 'incorrect_login_or_password',
       })
     }
-    localStorage.setItem(AUTH_STORAGE_KEY, 'true')
     resolve({
       status: 200,
       data: 'ok',
