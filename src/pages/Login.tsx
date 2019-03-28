@@ -2,23 +2,28 @@ import { navigate, RouteComponentProps } from '@reach/router'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
+import { USER_STORAGE_KEY } from '../api/auth'
 import { IUserIdentity } from '../models/user'
-import { loginUser, UserActions } from '../store/actions/user.actions'
+import { IRootState } from '../store'
+import { loginError, loginUser, UserActions } from '../store/actions/user.actions'
+
+const mapStateToProps = (state: IRootState) => ({
+  errorText: state.user.errorText
+})
 
 const mapDispatcherToProps = (dispatch: Dispatch<UserActions>) => ({
   authenticate: (user: IUserIdentity) => loginUser(dispatch, user),
+  setNotification: (notification: string) => loginError(notification)
 });
 
-type LoginProps = ReturnType<typeof mapDispatcherToProps> &
+type LoginProps = ReturnType<typeof mapDispatcherToProps> & ReturnType<typeof mapStateToProps> &
   RouteComponentProps
 
-const Login: React.FC<LoginProps> = ({ authenticate }) => {
+const Login: React.FC<LoginProps> = ({ authenticate, errorText, setNotification }) => {
   const [user, setField] = React.useState<IUserIdentity>({
     username: '',
     password: '',
   })
-
-  const [notification, setNotification] = React.useState<string>('')
 
   const onInputChange = (fieldName: string) => (
     e: React.SyntheticEvent<HTMLInputElement>,
@@ -30,14 +35,14 @@ const Login: React.FC<LoginProps> = ({ authenticate }) => {
   const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>): void => {
     e.preventDefault()
     authenticate(user)
-      .then(() => navigate('/profile'))
+      .then(() => {
+        localStorage.removeItem(USER_STORAGE_KEY);
+        localStorage.setItem(USER_STORAGE_KEY, JSON.stringify({username: user.username, authenticated: true}))
+        navigate('/profile')
+      })
       .catch(err => {
-        if (err.errorText) {
-          setNotification(err.errorText)
-        } else {
           // tslint:disable-next-line: no-console
           console.warn('request problem', err)
-        }
       })
   }
 
@@ -45,7 +50,7 @@ const Login: React.FC<LoginProps> = ({ authenticate }) => {
     <>
       <h2 className="login__title">Login</h2>
       <form onSubmit={onSubmit} className="form login-form">
-        {notification ? <p>{notification}</p> : null}
+        {errorText ? <p>{errorText}</p> : null}
         <div className="login-form__group">
           <label htmlFor="login" className="login-form__label">
             Your login
@@ -80,4 +85,4 @@ const Login: React.FC<LoginProps> = ({ authenticate }) => {
   )
 }
 
-export default connect(mapDispatcherToProps)(Login)
+export default connect(mapStateToProps, mapDispatcherToProps)(Login)

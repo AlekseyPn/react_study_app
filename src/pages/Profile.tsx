@@ -1,10 +1,15 @@
 import { RouteComponentProps } from '@reach/router'
 import React from 'react'
+import { IUser } from '../models/user'
 
-const Profile: React.FC<RouteComponentProps> = () => (
+interface IProfileProps extends RouteComponentProps {
+  user: IUser,
+}
+
+const Profile: React.FC<IProfileProps> = ({ user }) => (
   // todo username form state by useReducer
   <div className="profile-card">
-    <h2>Guest user</h2>
+    <h2>{`Hello ${user.username}`}</h2>
   </div>
 )
 
