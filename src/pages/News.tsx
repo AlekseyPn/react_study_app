@@ -1,30 +1,19 @@
-import { RouteComponentProps } from '@reach/router'
 import React from 'react'
-import { getNews } from '../api/News'
 import NewsItem from '../components/NewsItem'
 import { INewsItem } from '../models/news'
 
-const News: React.FC<RouteComponentProps> = () => {
-  const [news, setNews] = React.useState<INewsItem[]>([])
+interface INewsProps {
+  items: INewsItem[],
+}
 
-  React.useEffect(() => {
-    getNews()
-      .then(response => {
-        setNews(response.data)
-      })
-      .catch(err => {
-        // tslint:disable-next-line: no-console
-        console.warn(err)
-        throw new Error('Getting news problem')
-      })
-  }, [])
+const News: React.FC<INewsProps> = ({ items }) => {
   return (
     <div className="news">
-      {news.map(item => (
+      {items.map((item: INewsItem) => (
         <NewsItem data={item} key={item.id} />
       ))}
     </div>
   )
 }
 
-export default News
+export default News;

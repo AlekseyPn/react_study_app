@@ -1,4 +1,3 @@
-import { navigate } from '@reach/router'
 import { IUserIdentity } from '../models/user'
 
 interface IAuthResponse {
@@ -7,7 +6,7 @@ interface IAuthResponse {
   errorText?: string;
 }
 
-const AUTH_STORAGE_KEY: string = 'authenticated'
+export const USER_STORAGE_KEY: string = 'user'
 
 const checkUserIdentity = (data: IUserIdentity) =>
   data.username === 'Admin' && data.password === '12345'
@@ -20,7 +19,6 @@ export function authenticate(data: IUserIdentity): Promise<IAuthResponse> {
         errorText: 'incorrect_login_or_password',
       })
     }
-    localStorage.setItem(AUTH_STORAGE_KEY, 'true')
     resolve({
       status: 200,
       data: 'ok',
@@ -29,10 +27,6 @@ export function authenticate(data: IUserIdentity): Promise<IAuthResponse> {
 }
 
 export function checkAuthStatus(): boolean {
-  return !!localStorage.getItem(AUTH_STORAGE_KEY)
-}
-
-export function logout(): void {
-  localStorage.removeItem(AUTH_STORAGE_KEY)
-  navigate('/')
+  const userInfo: string | null = localStorage.getItem(USER_STORAGE_KEY)
+  return userInfo && JSON.parse(userInfo).authenticated
 }

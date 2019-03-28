@@ -1,12 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { RoutedApp } from './App'
+import RoutedApp from './App'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
 
-ReactDOM.render(<RoutedApp />, document.getElementById('root'))
+import { Provider } from 'react-redux'
+import store from './store'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render(
+  <Provider store={store}>
+    <RoutedApp />
+  </Provider>,
+  document.getElementById('root')
+)
+
 serviceWorker.unregister()

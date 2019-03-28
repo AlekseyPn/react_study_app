@@ -1,19 +1,37 @@
-import { Link, RouteComponentProps, Router } from '@reach/router'
+import { Link, navigate, RouteComponentProps, Router } from '@reach/router'
 import React from 'react'
-import { checkAuthStatus, logout } from './api/auth'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+import { checkAuthStatus, USER_STORAGE_KEY } from './api/auth'
 import './App.css'
 import Authenticated from './common/Authenticated'
+import NewsContainer from './containers/NewsContainer'
 import About from './pages/About'
 import Login from './pages/Login'
-import News from './pages/News'
 import Profile from './pages/Profile'
+import { IRootState } from './store'
+import { logout, UserActions } from './store/actions/user.actions'
+
+const mapStateToProps = (state: IRootState) => ({
+  user: state.user,
+})
+
+const mapDispatcherToProps = (dispatch: Dispatch<UserActions>) => ({
+  logout: () => dispatch(logout())
+})
 
 interface IAppProps extends RouteComponentProps {
   name: string;
   site: string;
+  logout: typeof logout
 }
 
 const App: React.FC<IAppProps> = props => {
+  function onLogoutClick() {
+    props.logout()
+    localStorage.removeItem(USER_STORAGE_KEY)
+    navigate('/')
+  }
   return (
     <div className="container">
       <h1>TZ #1 with hooks & TS</h1>
@@ -27,7 +45,7 @@ const App: React.FC<IAppProps> = props => {
         <Link to="/profile">Profile</Link>
         {'  '}
         {checkAuthStatus() ? (
-          <button onClick={logout} className="logout">
+          <button onClick={onLogoutClick} className="logout">
             Logout
           </button>
         ) : null}
@@ -42,18 +60,20 @@ const App: React.FC<IAppProps> = props => {
   )
 }
 
-const RoutedApp = () => {
+const AppContainer = connect(null, mapDispatcherToProps)(App)
+
+const RoutedApp: React.FC<ReturnType<typeof mapStateToProps>> = (props) => {
   return (
     <Router>
-      <App name="Fargustian" site="alekseypn.github.io" path="/">
-        <News path="/news" />
+      <AppContainer name="Fargustian" site="alekseypn.github.io" path="/">
+        <NewsContainer path="/news" />
         <About path="/about/:source" />
         <Login path="/login" />
         <Authenticated path="/profile">
-          <Profile path="/" />
+          <Profile path="/" user={props.user}/>
         </Authenticated>
-      </App>
+      </AppContainer>
     </Router>
   )
 }
-export { RoutedApp }
+export default connect(mapStateToProps)(RoutedApp)
