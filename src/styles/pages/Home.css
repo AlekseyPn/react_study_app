@@ -1,0 +1,14 @@
+.app-home__title {
+    text-align: center;
+}
+
+.app-home__content {
+    font-size: 1.25em;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .app-home__content {
+        max-width: 768px;
+        margin: 0 auto;
+    }
+}

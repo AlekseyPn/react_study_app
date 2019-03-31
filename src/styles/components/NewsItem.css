@@ -1,0 +1,28 @@
+.news-item:not(:last-of-type) {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.news-item__title {
+    font-size: 1.5em;
+}
+
+.news-item__link {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.news-item__link:hover {
+    color: #7a6898;
+}
+
+.news-item__timestamp {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.news-item__timestamp time {
+    margin-left: 5px;
+}

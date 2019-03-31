@@ -47,7 +47,7 @@ const Login: React.FC<LoginProps> = ({ authenticate, errorText, setNotification 
   }
 
   return (
-    <>
+    <section className="wrapper">
       <h2 className="login__title">Login</h2>
       <form onSubmit={onSubmit} className="form login-form">
         {errorText ? <p>{errorText}</p> : null}
@@ -81,7 +81,7 @@ const Login: React.FC<LoginProps> = ({ authenticate, errorText, setNotification 
           </button>
         </div>
       </form>
-    </>
+    </section>
   )
 }
 

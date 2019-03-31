@@ -1,33 +1,83 @@
-.App {
-  text-align: center;
+.app-title {
+    margin: 0 0 20px;
+    text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.app-header {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app-nav {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 10px 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.app-nav__link {
+    margin-right: 20px;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-nav__link:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.app-nav__link--active {
+    color: #7a6898;
+}
+
+.app-main {
+    flex: auto;
+    padding: 20px 0;
+}
+
+.app-footer {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.logout {
+    font-size: 18px;
+    background-color: #7a6898;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    transition: all 300ms linear;
+}
+
+.logout:hover {
+    background-color: #fff;
+    border-color: #7a6898;
+    color: #7a6898;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    padding: 0 30px;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .wrapper {
+        padding: 0 60px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
 }
