@@ -1,7 +1,6 @@
 import React from 'react'
 import NewsItem from '../components/NewsItem'
 import { INewsItem } from '../models/news'
-import '../styles/pages/News.css'
 
 interface INewsProps {
   items: INewsItem[],

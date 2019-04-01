@@ -5,7 +5,9 @@ import { Dispatch } from 'redux'
 import { checkAuthStatus, USER_STORAGE_KEY } from './api/auth'
 import './App.css'
 import Authenticated from './common/Authenticated'
+import AppFooter from './components/AppFooter'
 import NewsContainer from './containers/NewsContainer'
+import logo from './images/react-logo.svg'
 import About from './pages/About'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -30,7 +32,6 @@ interface IAppProps extends RouteComponentProps {
 const isCurrentRoute = ({ isCurrent }: LinkGetProps): any => {
   return isCurrent ? { className: 'app-nav__link app-nav__link--active' } : null
 }
-
 const App: React.FC<IAppProps> = props => {
   function onLogoutClick() {
     props.logout()
@@ -39,28 +40,31 @@ const App: React.FC<IAppProps> = props => {
   }
 
   return (
-    <div className="container">
-      <header className="app-header">
-        <h1 className="app-title">React App with TS</h1>
-        <nav className="app-nav">
-          <Link className="app-nav__link" to="/" getProps={isCurrentRoute}>Home</Link>
-          <Link className="app-nav__link" to="news" getProps={isCurrentRoute}>News</Link>
-          <Link className="app-nav__link" to="/about/habr" getProps={isCurrentRoute}>About habr</Link>
-          <Link className="app-nav__link" to="/profile" getProps={isCurrentRoute}>Profile</Link>
-          {checkAuthStatus() ? (
-            <button onClick={onLogoutClick} className="logout">
-              Logout
-            </button>
-          ) : null}
-        </nav>
-      </header>
-      <main className="app-main">{props.children}</main>
-      <footer className="app-footer">
-        <p>
-          Author: {props.name} | <a href={props.site}>AlekseyPn</a>
-        </p>
-      </footer>
-    </div>
+      <div className="app-wrapper">
+        <header className="app-header">
+          <h1 className="app-title visually-hidden">React App with TS</h1>
+          <div className="app-logo">
+            <img src={logo} alt="React logo"/>
+          </div>
+          <nav className="app-nav">
+            <Link className="app-nav__link" to="/" getProps={isCurrentRoute}>Home</Link>
+            <Link className="app-nav__link" to="news" getProps={isCurrentRoute}>News</Link>
+            <Link className="app-nav__link" to="/about/habr" getProps={isCurrentRoute}>About habr</Link>
+            <Link className="app-nav__link" to="/profile" getProps={isCurrentRoute}>Profile</Link>
+            {checkAuthStatus() ? (
+              <button onClick={onLogoutClick} className="logout">
+                Logout
+              </button>
+            ) : null}
+          </nav>
+        </header>
+        <main className="app-main">
+          <div className="container">
+            {props.children}
+          </div>
+        </main>
+        <AppFooter name={props.name}/>
+      </div>
   )
 }
 

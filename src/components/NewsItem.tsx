@@ -22,6 +22,7 @@ const NewsItem: React.FC<INewsItemProps> = ({
       </time>
     </div>
     <p className="news-item__description">{text}</p>
+    <a href={link} className="news-item__read-more" target="_blank">READ MORE</a>
   </article>
 )
 
