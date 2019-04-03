@@ -17,30 +17,6 @@
     box-shadow: 0 -3px 4px 0 rgba(0, 0, 0, 0.7);
 }
 
-.app-nav {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-around;
-    padding: 10px 30px;
-}
-
-.app-nav__link {
-    margin-right: 50px;
-    font-size: 14px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.5);
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.app-nav__link:hover {
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.app-nav__link--active {
-    color: #000;
-}
-
 .app-main {
     flex: auto;
     padding: 20px 0;
@@ -66,8 +42,40 @@
     color: #7a6898;
 }
 
-@media (max-width: 650px) {
-
+.mobile-nav-control {
+    display: none;
 }
 
+.hamburger .line{
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    display: block;
+    margin: 8px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
 
+.hamburger:hover{
+    cursor: pointer;
+}
+
+.hamburger.is-active .line:nth-child(2){
+    opacity: 0;
+}
+
+.hamburger.is-active .line:nth-child(1){
+    transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger.is-active .line:nth-child(3){
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+@media (max-width: 650px) {
+    .mobile-nav-control {
+        display: block;
+        z-index: 2;
+    }
+}

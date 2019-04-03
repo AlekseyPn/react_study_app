@@ -19,6 +19,7 @@
 
 .profile-card__avatar {
     border-radius: 50%;
+    background-color: cornflowerblue;
 }
 
 @media (min-width: 768px) {

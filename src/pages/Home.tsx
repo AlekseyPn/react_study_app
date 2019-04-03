@@ -22,7 +22,7 @@ const Home: React.FC<RouteComponentProps> = () => {
           </ul>
           <p>Link on repo: <a href="https://github.com/AlekseyPn/react_study_app">React study app</a></p>
         </div>
-        <div className="app-home__wrapper">
+        <div className="app-home__wrapper app-home__wrapper--images">
           <img src={reactLogo} alt="react logo" className="app-home__image app-home__image--react"/>
           <img src={tsLogo} alt="typescript logo" className="app-home__image app-home__image--ts"/>
         </div>
