@@ -1,0 +1,35 @@
+.news-item:not(:last-of-type) {
+    margin-bottom: 20px;
+}
+
+.news-item__title {
+    font-size: 1.5em;
+}
+
+.news-item__link {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.news-item__timestamp {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.news-item__timestamp time {
+    margin-left: 5px;
+}
+
+.news-item__read-more {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.news-item__read-more:hover {
+    color: rgba(0, 0, 0, 0.7);
+}

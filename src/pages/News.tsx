@@ -8,11 +8,12 @@ interface INewsProps {
 
 const News: React.FC<INewsProps> = ({ items }) => {
   return (
-    <div className="news">
+    <section className="news wrapper">
+      <h2 className="news__title">News</h2>
       {items.map((item: INewsItem) => (
         <NewsItem data={item} key={item.id} />
       ))}
-    </div>
+    </section>
   )
 }
 

@@ -1,0 +1,41 @@
+.profile-card__wrapper {
+    width: 100%;
+}
+
+.profile-card__wrapper--avatar {
+    text-align: center;
+}
+
+.profile-card {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.profile-card__username {
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.profile-card__avatar {
+    border-radius: 50%;
+    background-color: cornflowerblue;
+}
+
+@media (min-width: 768px) {
+    .profile-card {
+        margin-top: 30px;
+    }
+
+    .profile-card__wrapper {
+        width: 40%;
+    }
+    .profile-card__wrapper--avatar {
+        width: 30%;
+        margin-right: 40px;
+    }
+
+    .profile-card__username {
+        margin-top: 40px;
+    }
+}
