@@ -32,6 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/deep-freeze": "^0.1.1",
     "@types/reach__router": "^1.2.3",
     "@types/react-redux": "^7.0.6",
     "@types/redux-logger": "^3.0.7",
