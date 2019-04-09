@@ -6,7 +6,7 @@ import { LOGIN_USER_ERROR, LOGIN_USER_SUCCESS, LOGOUT_USER } from '../types/user
 
 export const loginSuccess = (user: IUser) => action(LOGIN_USER_SUCCESS, user)
 export const loginError = (errorText: string) => action(LOGIN_USER_ERROR, errorText)
-export const logout = () => action(LOGOUT_USER, { username: '', authenticated: false })
+export const logout = () => action(LOGOUT_USER)
 
 export type UserActions = ActionType<typeof loginError | typeof loginSuccess | typeof logout>;
 
