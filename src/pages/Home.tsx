@@ -1,7 +1,7 @@
 import { RouteComponentProps } from '@reach/router'
 import React from 'react'
-import reactLogo from '../images/react-logo.svg'
-import tsLogo from '../images/typescriptlang-icon.svg'
+import reactLogo from '../assets/images/react-logo.svg'
+import tsLogo from '../assets/images/typescriptlang-icon.svg'
 import "../styles/pages/Home.css"
 
 const Home: React.FC<RouteComponentProps> = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import spriteSocial from '../images/sprite_social.svg'
+import spriteSocial from '../assets/images/sprite_social.svg'
 import '../styles/components/AppFooter.css'
 
 interface IAppFooterProps {
