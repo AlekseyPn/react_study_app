@@ -11,7 +11,7 @@ const NewsItem: React.FC<INewsItemProps> = ({
 }) => (
   <article className="news__item news-item">
     <div className="news-item__title">
-      <a href={link} className="news-item__link" target="_blank">
+      <a href={link} className="news-item__link" target="_blank" rel="noopener noreferrer">
         {title}
       </a>
     </div>
@@ -22,7 +22,7 @@ const NewsItem: React.FC<INewsItemProps> = ({
       </time>
     </div>
     <p className="news-item__description">{text}</p>
-    <a href={link} className="news-item__read-more" target="_blank">READ MORE</a>
+    <a href={link} className="news-item__read-more" target="_blank" rel="noopener noreferrer">READ MORE</a>
   </article>
 )
 

@@ -1,8 +1,11 @@
 import { Redirect, RouteComponentProps } from '@reach/router'
 import React from 'react'
-import { checkAuthStatus } from '../api/auth'
 
-const Authenticated: React.FC<RouteComponentProps> = ({ children }) =>
+interface IAuthenticatedProps extends RouteComponentProps {
+  checkAuthStatus: () => boolean;
+}
+
+const Authenticated: React.FC<IAuthenticatedProps> = ({ children, checkAuthStatus }) =>
   checkAuthStatus() ? (
     <React.Fragment>{children}</React.Fragment>
   ) : (

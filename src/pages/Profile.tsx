@@ -10,7 +10,7 @@ interface IProfileProps extends RouteComponentProps {
 const Profile: React.FC<IProfileProps> = ({ user }) => (
   <section className="wrapper profile-card">
     <div className="profile-card__wrapper profile-card__wrapper--avatar">
-      <img className="profile-card__avatar" src="http://i.pravatar.cc/300" alt="user image" title="user image"/>
+      <img className="profile-card__avatar" src="http://i.pravatar.cc/300" alt="user" title="user image"/>
     </div>
     <div className="profile-card__wrapper">
       <h2 className="profile-card__username">{user.username}</h2>

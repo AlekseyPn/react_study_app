@@ -1,6 +1,7 @@
 import { Router } from '@reach/router'
 import React from 'react'
 import { connect } from 'react-redux'
+import { checkAuthStatus } from '../api/auth'
 import Authenticated from '../common/Authenticated'
 import AppContainer from '../components/App'
 import NewsContainer from '../containers/NewsContainer'
@@ -22,7 +23,7 @@ const RoutedApp: React.FC<ReturnType<typeof mapStateToProps>> = (props) => {
         <NewsContainer path="/news"/>
         <About path="/about/:source"/>
         <Login path="/login"/>
-        <Authenticated path="/profile">
+        <Authenticated path="/profile" checkAuthStatus={checkAuthStatus}>
           <Profile path="/" user={props.user}/>
         </Authenticated>
       </AppContainer>

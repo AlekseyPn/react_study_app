@@ -1,10 +1,10 @@
-import { authenticate, checkAuthStatus, USER_STORAGE_KEY } from '../auth'
+import { authenticate, checkAuthStatus, IAuthResponse, USER_STORAGE_KEY } from '../auth'
 
 jest.mock('../../localization/localization')
 
 describe('Auth module', () => {
   it('user to be authenticate', async () => {
-    const response = await authenticate({ username: 'Admin', password: '12345' })
+    const response: IAuthResponse = await authenticate({ username: 'Admin', password: '12345' })
     expect(response).toEqual({
       status: 200,
       data: 'ok',

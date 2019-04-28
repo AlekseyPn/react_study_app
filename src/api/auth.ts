@@ -1,7 +1,7 @@
 import { getMessage } from '../localization/localization'
 import { IUserIdentity } from '../models/user'
 
-interface IAuthResponse {
+export interface IAuthResponse {
   status: number;
   data?: any;
   errorText?: string;
